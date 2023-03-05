@@ -1,4 +1,4 @@
-const WORKER_URL = 'http://192.168.2.53:8787/';
+const WORKER_URL = 'https://what-is-the-spectrum.ytbeat32.workers.dev/';
 const bUseMocking = false;
 
 
