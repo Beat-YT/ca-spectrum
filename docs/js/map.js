@@ -85,4 +85,10 @@ function hideLoading() {
 }
 
 
+document.getElementById('Localization').onclick = function() {
+    map.locate({ setView: true, maxZoom: 16 })
+}
+
+
+
 hideLoading()   
