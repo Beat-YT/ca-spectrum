@@ -2,6 +2,7 @@
 
 async function onSubmit(carrier, lat, lng) {
     try {
+        clearTable();
         showLoading();
         const data = await fetchArea(carrier, lat, lng);
     
@@ -26,8 +27,6 @@ async function onSubmit(carrier, lat, lng) {
         hideLoading();
     }
 }
-
-
 
 
 if (window.location.hash.length > 0) {
