@@ -796,9 +796,9 @@ function mapSpectrum(spectrum, index, array) {
             D Block (2345–2350 MHz)
             */
 
-            if (spectrum.from == 2305 && spectrum.to == 2315) {
+            if (spectrum.from == 2305 && spectrum.to == 2320) {
                 spectrum.name = "Block W";
-            } else if (spectrum.from == 2350 && spectrum.to == 2360) {
+            } else if (spectrum.from == 2345 && spectrum.to == 2360) {
                 spectrum.name = "Block W'";
             }
 
