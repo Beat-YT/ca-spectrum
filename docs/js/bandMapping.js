@@ -221,7 +221,7 @@ function findChilds(spectrum, index, array) {
             D Block (2345–2350 MHz)
             */
 
-            const paired = array.find(s => s.from == spectrum.from + 45 && s.to == spectrum.to + 45);
+            const paired = array.find(s => s.from == spectrum.from + 40 && s.to == spectrum.to + 40);
             spectrum.paired = paired;
             break;
         }
@@ -795,6 +795,12 @@ function mapSpectrum(spectrum, index, array) {
             C Block (2315–2320 MHz)
             D Block (2345–2350 MHz)
             */
+
+            if (spectrum.from == 2305 && spectrum.to == 2315) {
+                spectrum.name = "Block W";
+            } else if (spectrum.from == 2350 && spectrum.to == 2360) {
+                spectrum.name = "Block W'";
+            }
 
             if (spectrum.from == 2305 && spectrum.to == 2310) {
                 spectrum.name = "Block A";
