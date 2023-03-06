@@ -1,5 +1,4 @@
 /// <reference path="types.d.ts" />
-var _test;
 
 /**
  * 
@@ -9,9 +8,7 @@ var _test;
  * @returns 
  */
 function findChilds(spectrum, index, array) {
-    if (index == 1) {
-        _test = array;
-    }
+
     switch (spectrum.category.toLowerCase()) {
         // 600Mhz band 71
         case "flexible broadband services (fbs) (600 mhz)": {
@@ -770,6 +767,8 @@ function mapSpectrum(spectrum, index, array) {
                 }
 
                 break;
+            } else {
+                spectrum.name = `${spectrum.from} - ${spectrum.to} MHz`;
             }
 
 
