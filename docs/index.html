@@ -12,6 +12,7 @@
     <script src="./js/bandMapping.js"></script>
     <script src="./js/parser.js"></script>
     <script src="./js/ui.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
 
 
 
@@ -182,7 +183,7 @@
                transition: all 0.2s ease-in-out;">
                     Submit
                 </button>
-                &nbsp; &nbsp;
+                &nbsp;
 
                 <button id="Localization" style="padding: 12px 24px;
                border: none;
@@ -194,9 +195,8 @@
                background-color: #2c3e50;
                box-shadow: 0 4px 6px rgba(0,0,0,0.2);
                transition: all 0.2s ease-in-out;">
-                    Geo-Localization
+                  <i class="fas fa-location-arrow"></i>
                 </button>
-
                 &nbsp; &nbsp;
                 <br>
                 <label for="my-select" style="display: inline;
@@ -207,10 +207,18 @@
                               font-weight: bold;">
                     Colour contiguous blocks:
                 </label>
-
-
-
                 <input id="mark-contigous" type="checkbox">
+
+                <br>
+                <label for="my-select" style="display: inline;
+                            font-family: Arial, Helvetica, sans-serif;
+                              margin-bottom: 8px;
+                              font-size: 16px;
+                              color: #2c3e50;
+                              font-weight: bold;">
+                    Show Subordinate Licenses:
+                </label>
+                <input id="allow-subordinate" type="checkbox">
                 <br><br>
             </div>
             <br>
