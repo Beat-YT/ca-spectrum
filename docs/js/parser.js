@@ -15,7 +15,7 @@ async function parseData(rawHtml, carrier) {
     const data = mapHtml(rows);
 
     // Rogers have A block everywhere, but it's registered under an other name (Fido Solutions)
-    if (carrier === 'rogers') {
+    if (carrier.toLowerCase() === 'rogers') {
         data.push(
             {
                 bandwidth: 15,
