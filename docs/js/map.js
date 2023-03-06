@@ -65,6 +65,13 @@ document.getElementById('carrierSelect').addEventListener('change', () => {
     window.localStorage.setItem('carrier', carrier);
 })
 
+document.getElementById('allow-subordinate').addEventListener('change', () => {
+    const checked = document.getElementById('allow-subordinate').checked;
+
+    window.localStorage.setItem('allow-subordinate', checked);
+})
+
+document.getElementById('allow-subordinate').checked = window.localStorage.getItem('allow-subordinate') === 'true';
 document.getElementById('mark-contigous').checked = window.localStorage.getItem('mark-contigous') === 'true';;
 document.getElementById('carrierSelect').value = window.localStorage.getItem('carrier') || 'Bell';
 
