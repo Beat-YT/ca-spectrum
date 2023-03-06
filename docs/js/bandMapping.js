@@ -935,29 +935,38 @@ function findOverlappingSpectrumHigh(spectrum, array) {
  * @returns {Spectrum[]}
  */
 function mapHtml(rows) {
+    const bAllowSubordinate = document.getElementById('allow-subordinate').checked;
+
     const data = Array.from(rows)
-    .filter(x => {
-        const cells = x.getElementsByTagName('td');
-        const type = cells[3].innerHTML.trim();
+        .filter(
+            x => {
+                if (bAllowSubordinate)
+                    return true;
 
-        return type.toLowerCase() != 'subordinate';
-    }).map(x => {
-        const cells = x.getElementsByTagName('td');
-        const category = cells[4].innerHTML.trim();
-        const from = parseFloat(cells[6].innerHTML.trim());
-        const to = parseFloat(cells[7].innerHTML.trim());
-        const bandwidth = to - from;
+                const cells = x.getElementsByTagName('td');
+                const type = cells[3].innerHTML.trim();
 
-        return {
-            "name": undefined,
-            category,
-            to,
-            from,
-            bandwidth,
-            paired: null,
-            frequency: mapBandToFrequency(category)
-        }
-    })
+                return type.toLowerCase() != 'subordinate';
+            }
+        ).map(
+            x => {
+                const cells = x.getElementsByTagName('td');
+                const category = cells[4].innerHTML.trim();
+                const from = parseFloat(cells[6].innerHTML.trim());
+                const to = parseFloat(cells[7].innerHTML.trim());
+                const bandwidth = to - from;
+
+                return {
+                    "name": undefined,
+                    category,
+                    to,
+                    from,
+                    bandwidth,
+                    paired: null,
+                    frequency: mapBandToFrequency(category)
+                }
+            }
+        )
         .filter(x => x != null)
         .sort((a, b) => a.from - b.from)
         .filter(x => x.frequency != null)
