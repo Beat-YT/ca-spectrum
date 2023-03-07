@@ -613,10 +613,24 @@ function mapSpectrum(spectrum, index, array) {
             }
 
             // B2/B2'
-            else if (spectrum.from == 1725 && spectrum.to == 1730) {
+            else if (spectrum.from == 1715 && spectrum.to == 1720) {
                 spectrum.name = "Block B2";
-            } else if (spectrum.from == 2125 && spectrum.to == 2130) {
+            } else if (spectrum.from == 2115 && spectrum.to == 2120) {
                 spectrum.name = "Block B2'";
+            }
+
+            // B3/B3'
+            else if (spectrum.from == 1720 && spectrum.to == 1725) {
+                spectrum.name = "Block B3";
+            } else if (spectrum.from == 2120 && spectrum.to == 2125) {
+                spectrum.name = "Block B3'";
+            }
+
+            // B4/B4'
+            else if (spectrum.from == 1725 && spectrum.to == 1730) {
+                spectrum.name = "Block B4";
+            } else if (spectrum.from == 2125 && spectrum.to == 2130) {
+                spectrum.name = "Block B4'";
             }
 
 
