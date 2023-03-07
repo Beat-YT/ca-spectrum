@@ -9,7 +9,7 @@ async function onSubmit(carrier, lat, lng) {
         const parsed = await parseData(data, carrier);
     
         console.log(parsed);
-    
+    /*
         const result = btoa(
             JSON.stringify({
                 carrier,
@@ -19,7 +19,7 @@ async function onSubmit(carrier, lat, lng) {
             })
         );
 
-        window.location.hash = result;
+        window.location.hash = result;*/
 
         updateTable(parsed);
     }
