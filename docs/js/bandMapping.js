@@ -733,15 +733,15 @@ function mapSpectrum(spectrum, index, array) {
             spectrum.friendlyName = "AWS-4";
 
             if (spectrum.from == 2180 && spectrum.to == 2200) {
-                spectrum.name = "Block C & D";
+                spectrum.name = "AWS-4 Block C & D";
             }
 
             else if (spectrum.from == 2180 && spectrum.to == 2190) {
-                spectrum.name = "Block C";
+                spectrum.name = "AWS-4 Block C";
             }
 
             else if (spectrum.from == 2190 && spectrum.to == 2200) {
-                spectrum.name = "Block D";
+                spectrum.name = "AWS-4 Block D";
             }
 
             break;
