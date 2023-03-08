@@ -770,11 +770,19 @@ function mapSpectrum(spectrum, index, array) {
 
             const pairedBlocks = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 
+            // what is going on with SSi's data?
+            if (spectrum.from == 2500 && spectrum.to == 2535) {
+                spectrum.name = "Block A & B";
+                spectrum.friendlyName = "Band 7";
+                spectrum.to = 2520;
+                break;
+            }
+
             // set the name for all paired spectrum
             if (spectrum.from >= 2570 && spectrum.to <= 2620) {
                 spectrum.friendlyName = `Band 41`;
             }
-            else if (spectrum.from >= 2500 && spectrum.to <= 2570) {
+            else if (spectrum.from >= 2500 && spectrum.to <= 2570 && spectrum.bandwidth == 10) {
                 spectrum.friendlyName = `Band 7`;
 
                 const spectrumIndex = (spectrum.from - 2500) / 10;
@@ -800,6 +808,13 @@ function mapSpectrum(spectrum, index, array) {
                 spectrum.name = `${spectrum.from} - ${spectrum.to} MHz`;
             }
 
+
+            
+            // dam SSi
+            if (spectrum.from == 2568 && spectrum.to == 2596) {
+                spectrum.from = 2570;
+                spectrum.to = 2595;
+            }
 
             if ((spectrum.from == 2570 || spectrum.from == 2575) && spectrum.to == 2595) {
                 spectrum.name = "Block H";
