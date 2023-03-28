@@ -779,6 +779,16 @@ function mapSpectrum(spectrum, index, array) {
 
             const pairedBlocks = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 
+            if (spectrum.from == 2520 && spectrum.to == 2540) {
+                spectrum.name = "Block C & D";
+                spectrum.friendlyName = "Band 7";
+                break;
+            } else if (spectrum.from == 2640 && spectrum.to == 2660) {
+                spectrum.name = "Block C' & D'";
+                spectrum.friendlyName = "Band 7";
+                break;
+            }
+
             // what is going on with SSi's data?
             if (spectrum.from == 2500 && spectrum.to == 2535) {
                 spectrum.name = "Block A-B-C";
@@ -830,6 +840,10 @@ function mapSpectrum(spectrum, index, array) {
             if (spectrum.from == 2568 && spectrum.to == 2596) {
                 spectrum.from = 2570;
                 spectrum.to = 2595;
+            }
+
+            if (spectrum.from == 2595 && spectrum.to == 2585) {
+                spectrum.name = "Block I";
             }
 
             if ((spectrum.from == 2570 || spectrum.from == 2575) && spectrum.to == 2595) {
