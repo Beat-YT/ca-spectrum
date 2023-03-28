@@ -175,7 +175,8 @@ function findChilds(spectrum, index, array) {
         }
 
         case "advanced wireless service- band 4": {
-            // AWS-4 is downlink only
+            const paired = array.find(s => s.from == spectrum.from + 400 && s.to == spectrum.to + 400);
+            spectrum.paired = paired;
             break;
         }
 
@@ -725,23 +726,31 @@ function mapSpectrum(spectrum, index, array) {
 
         case "advanced wireless service- band 4": {
             /* 
-            AWS-4 is a 20 MHz block of downlink only spectrum in the 2180-2200 MHz range.
-            Block C  2180-2190 10Mhz
-            Block D  2190-2200 10Mhz
+            AWS-4 is two 10 MHz block.
+            Block C  2000-2010 2180-2190 10Mhz
+            Block D  2010-2020 2190-2200 10Mhz
             */
 
             spectrum.friendlyName = "AWS-4";
 
-            if (spectrum.from == 2180 && spectrum.to == 2200) {
+            if (spectrum.from == 2000 && spectrum.to == 2020) {
                 spectrum.name = "AWS-4 Block C & D";
-            }
+            } else if (spectrum.from == 2180 && spectrum.to == 2200) {
+                spectrum.name = "AWS-4 Block C' & D'";
+            } 
 
-            else if (spectrum.from == 2180 && spectrum.to == 2190) {
+
+            else if (spectrum.from == 2000 && spectrum.to == 2010) {
                 spectrum.name = "AWS-4 Block C";
             }
+            else if (spectrum.from == 2180 && spectrum.to == 2190) {
+                spectrum.name = "AWS-4 Block C'";
+            }
 
-            else if (spectrum.from == 2190 && spectrum.to == 2200) {
+            else if (spectrum.from == 2010 && spectrum.to == 2020) {
                 spectrum.name = "AWS-4 Block D";
+            } else if (spectrum.from == 2190 && spectrum.to == 2200) {
+                spectrum.name = "AWS-4 Block D'";
             }
 
             break;
