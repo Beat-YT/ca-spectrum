@@ -597,7 +597,7 @@ function mapSpectrum(spectrum, index, array) {
             else if (spectrum.from == 2110 && spectrum.to == 2120) {
                 spectrum.name = "Block A'";
             }
-            
+
 
             // B
             else if (spectrum.from == 1720 && spectrum.to == 1730) {
@@ -737,7 +737,7 @@ function mapSpectrum(spectrum, index, array) {
                 spectrum.name = "AWS-4 Block C & D";
             } else if (spectrum.from == 2180 && spectrum.to == 2200) {
                 spectrum.name = "AWS-4 Block C' & D'";
-            } 
+            }
 
 
             else if (spectrum.from == 2000 && spectrum.to == 2010) {
@@ -808,25 +808,35 @@ function mapSpectrum(spectrum, index, array) {
             if (spectrum.from >= 2570 && spectrum.to <= 2620) {
                 spectrum.friendlyName = `Band 41`;
             }
-            else if (spectrum.from >= 2500 && spectrum.to <= 2570 && spectrum.bandwidth == 10) {
+            else if (
+                spectrum.from >= 2500 && spectrum.to <= 2570 
+                && (spectrum.bandwidth == 10 || spectrum.bandwidth == 20)
+            ) {
                 spectrum.friendlyName = `Band 7`;
 
                 const spectrumIndex = (spectrum.from - 2500) / 10;
                 const blockLetter = pairedBlocks[spectrumIndex];
 
-                if (blockLetter) {
+                if (blockLetter && spectrum.bandwidth == 10) {
                     spectrum.name = `Block ${blockLetter}`;
+                } else if (blockLetter && spectrum.bandwidth == 20) {
+                    spectrum.name = `Block ${blockLetter} & ${pairedBlocks[spectrumIndex + 1]}`;
                 }
 
                 break;
-            } else if (spectrum.from >= 2620 && spectrum.to <= 2690) {
+            } else if (
+                spectrum.from >= 2620 && spectrum.to <= 2690
+                && (spectrum.bandwidth == 10 || spectrum.bandwidth == 20)
+                ) {
                 spectrum.friendlyName = `Band 7`;
 
                 const spectrumIndex = (spectrum.from - 2620) / 10;
                 const blockLetter = pairedBlocks[spectrumIndex];
 
-                if (blockLetter) {
+                if (blockLetter && spectrum.bandwidth == 10) {
                     spectrum.name = `Block ${blockLetter}'`;
+                } else if (blockLetter && spectrum.bandwidth == 20) {
+                    spectrum.name = `Block ${blockLetter}' & ${pairedBlocks[spectrumIndex + 1]}'`;
                 }
 
                 break;
@@ -835,15 +845,26 @@ function mapSpectrum(spectrum, index, array) {
             }
 
 
-            
+
             // dam SSi
             if (spectrum.from == 2568 && spectrum.to == 2596) {
                 spectrum.from = 2570;
                 spectrum.to = 2595;
             }
 
-            if (spectrum.from == 2595 && spectrum.to == 2585) {
-                spectrum.name = "Block I";
+            // block H1 & H2
+            if ((spectrum.from == 2570 || spectrum.from == 2575) && spectrum.to == 2585) {
+                spectrum.name = "Block H1";
+            } else if (spectrum.from == 2585 && spectrum.to == 2595) {
+                spectrum.name = "Block H2";
+            }
+
+            // block I1 & I2
+            if (spectrum.from == 2595 && spectrum.to == 2605) {
+                spectrum.name = "Block I1";
+            }
+            else if (spectrum.from == 2605 && (spectrum.to == 2620 || spectrum.to == 2615)) {
+                spectrum.name = "Block I2";
             }
 
             if ((spectrum.from == 2570 || spectrum.from == 2575) && spectrum.to == 2595) {
