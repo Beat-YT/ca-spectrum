@@ -18,6 +18,8 @@ const server = http.createServer((req, res) => {
             res.setHeader('Content-Type', 'text/html');
         } else if (filePath.endsWith('.css')) {
             res.setHeader('Content-Type', 'text/css');
+        } else if (filePath.endsWith('.ico')) {
+            res.setHeader('Content-Type', 'image/x-icon');
         }
 
         if (err) {
