@@ -27,6 +27,9 @@ function mapBandToFrequency(band) {
         case "Flexible broadband services (FBS) (3500 MHz)": 
             return 3500;
 
+        case "Flexible broadband services (FBS) (3800 MHz)":
+            return 3500; // we combine 3500 and 3800 because they are adjacent
+
         default:
             console.error("Unknown band: " + band);
             return null;

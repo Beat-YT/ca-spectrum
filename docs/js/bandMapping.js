@@ -924,22 +924,33 @@ function mapSpectrum(spectrum, index, array) {
             break;
         }
 
+        case "flexible broadband services (fbs) (3800 mhz)":
         case "flexible broadband services (fbs) (3500 mhz)": {
             /*
             The 3500 MHz band plan, which includes the frequency range of 3450 to 3650 MHz.
             The frequency range is divided into 20 unpaired blocks of 10 MHz each.
-            Block name are from A to V
+            Block name are from A to V (excluding I and O)
+
+            The 3800 MHz band plan, which includes the frequency range of 3650 to 3900 MHz.
+            Much like the 3500 MHz band, the frequency range is divided into 25 unpaired blocks of 10 MHz each.
+            Blocks name are from V to AW (excluding I and O)
             */
 
-            spectrum.friendlyName = `Band 78`;
+            if (spectrum.category.includes("3500")) {
+                spectrum.friendlyName = `Band 78`;
+            } else {
+                spectrum.friendlyName = `Band 77`;
+            }
 
-            const blockLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V'];
+            const blockLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'AJ', 'AK', 'AL', 'AM', 'AN', 'AP', 'AQ', 'AR', 'AS', 'AT', 'AU', 'AV', 'AW'];
             const blockNumber = (spectrum.from - 3450) / 10;
             const blockLetter = blockLetters[blockNumber];
 
             if (blockLetter) {
                 spectrum.name = `Block ${blockLetter}`;
             }
+
+            break;
         }
     }
 

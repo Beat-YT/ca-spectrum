@@ -71,8 +71,8 @@ document.getElementById('allow-subordinate').addEventListener('change', () => {
     window.localStorage.setItem('allow-subordinate', checked);
 })
 
-document.getElementById('allow-subordinate').checked = window.localStorage.getItem('allow-subordinate') === 'true';
-document.getElementById('mark-contigous').checked = window.localStorage.getItem('mark-contigous') === 'true';;
+document.getElementById('allow-subordinate').checked = window.localStorage.getItem('allow-subordinate') !== 'false';
+document.getElementById('mark-contigous').checked = window.localStorage.getItem('mark-contigous') !== 'false';;
 document.getElementById('carrierSelect').value = window.localStorage.getItem('carrier') || 'Bell';
 
 
