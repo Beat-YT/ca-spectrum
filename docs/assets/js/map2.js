@@ -143,18 +143,18 @@ document.getElementById('bandlistArea').addEventListener('click', function (even
     if (hasTel) {
         const someWithTel = parsed.find(x => x.area.startsWith('TEL-'));
         console.log(someWithTel)
-        omnivore.kml('http://127.0.0.1:8080/assets/kmls/TEL.KML', null, establishments).addTo(map);
+        omnivore.kml('assets/kmls/TEL.KML', null, establishments).addTo(map);
     }
 
     if (hasTier2) {
-        omnivore.kml('http://127.0.0.1:8080/assets/kmls/Tier2.KML', null, establishments).addTo(map);
+        omnivore.kml('assets/kmls/Tier2.KML', null, establishments).addTo(map);
     }
 
     if (hasTier3) {
-        omnivore.kml('http://127.0.0.1:8080/assets/kmls/Tier3.KML', null, establishments).addTo(map);
+        omnivore.kml('assets/kmls/Tier3.KML', null, establishments).addTo(map);
     }
 
     if (hasTier4) {
-         omnivore.kml('http://127.0.0.1:8080/assets/kmls/Tier4.KML', null, establishments).addTo(map);
+         omnivore.kml('assets/kmls/Tier4.KML', null, establishments).addTo(map);
     }
 });

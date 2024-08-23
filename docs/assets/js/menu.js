@@ -3,7 +3,7 @@
  */
 let licenses = null;
 
-fetch('/assets/licenses.json')
+fetch('assets/licenses.json')
     .then((response) => response.json())
     .then((adata) => {
         licenses = adata;
