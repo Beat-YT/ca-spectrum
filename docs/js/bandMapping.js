@@ -1045,61 +1045,6 @@ function findOverlappingSpectrumHigh(spectrum, array) {
     return false;
 }
 
-/**
- * @param {HTMLCollectionOf<HTMLTableRowElement>} rows
- * @returns {Spectrum[]}
- */
-function mapHtml(rows) {
-    const bAllowSubordinate = document.getElementById('allow-subordinate').checked;
-
-    const data = Array.from(rows)
-        .filter(
-            x => {
-                if (bAllowSubordinate)
-                    return true;
-
-                const cells = x.getElementsByTagName('td');
-                const type = cells[3].innerHTML.trim();
-
-                return type.toLowerCase() != 'subordinate';
-            }
-        ).map(
-            x => {
-                const cells = x.getElementsByTagName('td');
-                const category = cells[4].innerHTML.trim();
-                const from = parseFloat(cells[6].innerHTML.trim());
-                const to = parseFloat(cells[7].innerHTML.trim());
-                const bandwidth = to - from;
-
-                return {
-                    "name": undefined,
-                    category,
-                    to,
-                    from,
-                    bandwidth,
-                    paired: null,
-                    frequency: mapBandToFrequency(category)
-                }
-            }
-        )
-        .filter(x => x != null)
-        .sort((a, b) => a.from - b.from)
-        .filter(x => x.frequency != null)
-        .map(mapSpectrum)
-        .map(findChilds)
-        .filter(
-            (x, i, array) => {
-                const isPaired = array.some(s => s.paired === x);
-                return !isPaired
-            });
-
-
-    return pairFragmentedBlocks(data)
-        .filter((x, i, array) => {
-            const bIsPaired = array.some(s => s.paired === x);
-            return !bIsPaired
-        });
-}
 
 /**
  * @typedef  categories

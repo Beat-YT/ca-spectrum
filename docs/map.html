@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fullscreen Map with Responsive Menu</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+            flex-direction: row;
+            overflow: hidden;
+        }
+
+        .menu {
+            background: #333;
+            color: #fff;
+            padding: 10px;
+            box-sizing: border-box;
+            flex-shrink: 0;
+            flex: 1;
+            overflow: auto;
+        }
+
+        .map {
+            flex: 3;
+            background: #ccc;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .menu {
+                width: 100%;
+                height: 200px;
+                /* Adjust as needed */
+            }
+
+            .map {
+                flex: 1;
+            }
+        }
+
+        .bandList {
+            width: 100%;
+            border-collapse: separate;
+            /* Forces the table to have a fixed layout */
+        }
+
+        .header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+        }
+
+        td {
+            display: table-cell;
+            vertical-align: inherit;
+            unicode-bidi: isolate;
+            padding-top: 3px;
+            padding-bottom: 3px;
+        }
+
+        tr.data {
+            cursor: pointer;
+            display: table-row;
+            vertical-align: inherit;
+            unicode-bidi: isolate;
+            border-color: inherit;
+        }
+
+        tr.data:nth-child(even) {
+            background-color: #535353;
+        }
+    </style>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+
+    <script
+        src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js'></script>
+
+    <script src="js/api.js"></script>
+    <script src="assets/js/newParser.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="map">
+            <div id="map" style="height: 100%; width: 100%;"></div>
+        </div>
+        <div class="menu">
+            <h2>Choose a Band</h2>
+            <!-- band menu is a table of band with text buttons, each with an onclick event that calls the function 'loadBand' with the band name as an argument -->
+            <div>
+                <p>Click on a band/block, then a region on the map for the owner(s).</p>
+                <table style="width:100%" id="bandlistArea" class="bandList">
+                    <thead>
+                        <tr class="header">
+                            <th>Band</th>
+                            <th>Freq</th>
+                            <th>Block</th>
+                        </tr>
+                    </thead>
+                    <tbody id="band-table">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/map2.js"></script>
+    <script src="assets/js/menu.js"></script>
+</body>
+
+</html>

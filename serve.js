@@ -5,7 +5,7 @@ const http = require('http');
 const server = http.createServer((req, res) => {
     const fs = require('fs');
     const path = require('path');
-    let filePath = path.join(__dirname, 'docs', req.url);
+    let filePath = path.join(__dirname, 'docs', decodeURIComponent(req.url));
 
     if (filePath.endsWith('\\')) {
         filePath = path.join(filePath, 'index.html');
@@ -24,7 +24,7 @@ const server = http.createServer((req, res) => {
 
         if (err) {
             res.writeHead(404);
-            res.end('Not Found');
+            res.end('Not Found: ' + filePath);
             return;
         }
 
