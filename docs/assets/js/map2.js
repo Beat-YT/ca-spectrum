@@ -18,6 +18,8 @@ document.getElementById('bandlistArea').addEventListener('click', function (even
     }
 
     if (!target) return;
+    document.getElementsByClassName('selected')[0].classList = 'data';
+    target.classList = 'data selected';
 
     const name = target.children[0].textContent;
     const block = target.children[2].textContent;
